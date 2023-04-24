@@ -1,27 +1,42 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import React from 'react'
 import './App.css'
 
-let name: string;
-let age: number;
-let isStudent: boolean;
-let hobbies: string[]; /*Array of strings for number it must be number[] */
-let role: [number, string] /*Is going to contain one number and one string E.g: role = [1, "owner"]*/
+// let name: string
 
-/*Proper way to declare objects*/
+// /* This is called union, is when I want to assign more than one type to a variable */
+// let age: number | string
 
-type person = {
-  name: string;
-  age: number;
-}
+// age = 'Papito'
+// age = 23
 
+// /* -------------------------------------- */
 
-function App() {
+// let isStudent: boolean
+// let hobbies: string[] /* Array of strings, for number it must be number[] */
+// let role: [number, string] /* Is going to contain one number and one string E.g: role = [1, "owner"] */
 
+// let printName: (name: string) => never
+
+/* Proper way to declare objects */
+
+// type Person = {
+//   name: string;
+//   age?: number;
+// }
+
+// let person: Person = {
+//   name: "Papolo",
+//   age: 50
+// }
+
+// /* If I want to store an array of objects (In this case a person) */
+// let lotsOfPeople: Person[]
+
+const App: React.FC = () => {
   return (
     <div className="App">
-      <h1>TypeScript Tutorial</h1>
+      <span className="heading">Taskify
+      </span>
     </div>
   )
 }
