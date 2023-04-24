@@ -1,42 +1,29 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './App.css'
-
-// let name: string
-
-// /* This is called union, is when I want to assign more than one type to a variable */
-// let age: number | string
-
-// age = 'Papito'
-// age = 23
-
-// /* -------------------------------------- */
-
-// let isStudent: boolean
-// let hobbies: string[] /* Array of strings, for number it must be number[] */
-// let role: [number, string] /* Is going to contain one number and one string E.g: role = [1, "owner"] */
-
-// let printName: (name: string) => never
-
-/* Proper way to declare objects */
-
-// type Person = {
-//   name: string;
-//   age?: number;
-// }
-
-// let person: Person = {
-//   name: "Papolo",
-//   age: 50
-// }
-
-// /* If I want to store an array of objects (In this case a person) */
-// let lotsOfPeople: Person[]
+import InputField from './assets/components/InputField'
+import { ToDo } from './model'
 
 const App: React.FC = () => {
+  const [toDo, setToDo] = useState<string>('')
+  const [toDos, setToDos] = useState<ToDo[]>([]);
+
+  const handleAdd = (e: React.FormEvent<EventTarget>) => {
+    e.preventDefault()
+
+    if(toDo) {
+      setToDos([...toDos, { id: Date.now(), toDo: toDo, isDone: false }])
+      setToDo("")
+    }
+  }
+
+  console.log(toDos);
+
   return (
     <div className="App">
       <span className="heading">Taskify
       </span>
+    <InputField toDo={toDo} setToDo={setToDo} handleAdd={handleAdd} />
+    {toDos.map(todo => <li>{todo.toDo}</li>)}
     </div>
   )
 }
